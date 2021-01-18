@@ -1,7 +1,7 @@
 package com.coderman.concurrent.config;
 
-import com.coderman.concurrent.response.RestApiResponse;
-import com.coderman.concurrent.response.error.BusinessException;
+import com.coderman.concurrent.vo.response.RestApiResponse;
+import com.coderman.concurrent.vo.response.error.BusinessException;
 import com.coderman.concurrent.util.HttpUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

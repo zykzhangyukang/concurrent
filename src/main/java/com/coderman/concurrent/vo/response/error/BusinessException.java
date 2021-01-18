@@ -1,4 +1,4 @@
-package com.coderman.concurrent.response.error;
+package com.coderman.concurrent.vo.response.error;
 
 /**
  * @Author zhangyukang

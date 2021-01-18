@@ -1,4 +1,4 @@
-package com.coderman.concurrent.response;
+package com.coderman.concurrent.vo.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
