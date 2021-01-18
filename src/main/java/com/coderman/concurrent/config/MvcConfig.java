@@ -6,6 +6,7 @@ import com.coderman.concurrent.util.HttpUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.HandlerExceptionResolver;
@@ -23,16 +24,20 @@ import java.util.List;
 @Configuration
 @Slf4j
 public class MvcConfig implements WebMvcConfigurer {
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @Override
     public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
         resolvers.add((httpServletRequest, httpServletResponse, o, e) -> {
-            final String requestURL=httpServletRequest.getRequestURI();
+            final String requestURL=httpServletRequest.getRequestURL().toString();
             final String defaultErrorMsg="系统异常,请联系管理员";
             final HashMap<String,Object> error=new HashMap<>();
             log.info("请求地址:{}",requestURL);
             if(e instanceof BusinessException){
                 BusinessException businessException= (BusinessException) e;
-                log.error("业务异常,errorMsg:{},errorCode:{}",businessException.getBaseError().getErrorMsg(),businessException.getBaseError().getErrorCode(),e);
+                log.error("业务异常,errorMsg:{},errorCode:{}",businessException.getBaseError().getErrorMsg(),businessException.getBaseError().getErrorCode());
                 error.put("errorCode",businessException.getBaseError().getErrorCode());
                 error.put("errorMsg",businessException.getBaseError().getErrorMsg());
             }else {
@@ -40,7 +45,6 @@ public class MvcConfig implements WebMvcConfigurer {
                 error.put("errorCode",HttpStatus.INTERNAL_SERVER_ERROR.value());
                 error.put("errorMsg",defaultErrorMsg);
             }
-            ObjectMapper objectMapper=new ObjectMapper();
             try {
                 HttpUtil.response(httpServletResponse,objectMapper.writeValueAsString(RestApiResponse.error(error)));
             } catch (JsonProcessingException jsonProcessingException) {
