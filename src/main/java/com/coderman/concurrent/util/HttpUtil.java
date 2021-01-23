@@ -11,8 +11,8 @@ import java.io.IOException;
 public class HttpUtil {
 
     public static void response(HttpServletResponse response,String json){
-        response.setContentType("application/json;charset=utf-8;");
         try {
+            response.setContentType("application/json;charset=utf-8;");
             response.getWriter().println(json);
         } catch (IOException e) {
             e.printStackTrace();
