@@ -1,8 +1,8 @@
 package com.coderman.concurrent.config;
 
+import com.coderman.concurrent.util.HttpUtil;
 import com.coderman.concurrent.vo.response.RestApiResponse;
 import com.coderman.concurrent.vo.response.error.BusinessException;
-import com.coderman.concurrent.util.HttpUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.HashMap;
