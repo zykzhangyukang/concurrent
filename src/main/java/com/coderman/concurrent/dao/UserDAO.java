@@ -6,5 +6,4 @@ package com.coderman.concurrent.dao;
  * @Version 1.0
  **/
 public class UserDAO {
-
 }
