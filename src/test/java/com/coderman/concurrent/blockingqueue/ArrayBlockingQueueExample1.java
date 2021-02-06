@@ -13,7 +13,7 @@ import java.util.concurrent.BlockingQueue;
  * @Version 1.0
  **/
 @Slf4j
-public class BlockingQueueExample1 {
+public class ArrayBlockingQueueExample1 {
 
     private static final int QUEUE_SIZE = 10;
 
