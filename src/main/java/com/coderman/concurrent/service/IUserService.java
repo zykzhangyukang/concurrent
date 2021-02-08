@@ -1,6 +1,8 @@
 package com.coderman.concurrent.service;
 
-import com.coderman.concurrent.dto.UserDTO;
+import com.coderman.concurrent.model.User;
+
+import java.util.List;
 
 /**
  * @Author zhangyukang
@@ -8,7 +10,16 @@ import com.coderman.concurrent.dto.UserDTO;
  * @Version 1.0
  **/
 public interface IUserService {
+    /**
+     * 查询所有用户
+     * @return
+     */
+    List<User> findAll();
 
-    UserDTO getByUsername(String username);
-
+    /**
+     * 根据用户id查询用户
+     * @param id 用户id
+     * @return
+     */
+    User findById(Integer id);
 }

@@ -1,3 +1,19 @@
 spring:
   profiles:
     active: dev
+  datasource:
+    username: root
+    password: zhangyukang
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3307/test?serverTimezone=Asia/Shanghai&useSSL=false&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.coderman.concurrent.model
+logging:
+  level:
+    root: info
+    com.coderman.concurrent.mapper: debug

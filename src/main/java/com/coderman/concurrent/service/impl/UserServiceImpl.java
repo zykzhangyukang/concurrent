@@ -1,8 +1,12 @@
 package com.coderman.concurrent.service.impl;
 
-import com.coderman.concurrent.dto.UserDTO;
+import com.coderman.concurrent.mapper.UserMapper;
+import com.coderman.concurrent.model.User;
 import com.coderman.concurrent.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Author zhangyukang
@@ -11,8 +15,17 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class UserServiceImpl implements IUserService {
+
+    @Autowired
+    private UserMapper userMapper;
+
     @Override
-    public UserDTO getByUsername(String username) {
-        return new UserDTO(username,"123456");
+    public List<User> findAll() {
+        return userMapper.selectAll();
+    }
+
+    @Override
+    public User findById(Integer id) {
+        return userMapper.selectById(id);
     }
 }
